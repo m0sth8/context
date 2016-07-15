@@ -83,7 +83,7 @@ func getApexLogger(ctx context.Context, keys ...interface{}) Logger {
 		if alog, ok := log.Log.(*log.Logger); ok && alog.Handler == nil {
 			log.SetHandler(discard.Default)
 		}
-		logger = log.Log.WithFields(fields)
+		logger = withFields(log.Log, fields)
 
 	}
 
@@ -95,5 +95,14 @@ func getApexLogger(ctx context.Context, keys ...interface{}) Logger {
 		}
 	}
 
-	return logger.WithFields(fields)
+	return withFields(logger, fields)
+}
+
+// withFields check if fields argument is not empty and calls WithFields on Logger interface.
+// Otherwise returns original Logger.
+func withFields(lgr Logger, fields log.Fields) Logger {
+	if len(fields) != 0 {
+		return lgr.WithFields(fields)
+	}
+	return lgr
 }
