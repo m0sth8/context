@@ -56,13 +56,13 @@ func GetLogger(ctx context.Context, keys ...interface{}) Logger {
 // are provided, they will be resolved on the context and included in the
 // logger. Only use this function if specific apex/log functionality is
 // required.
-func getApexLogger(ctx context.Context, keys ...interface{}) *log.Entry {
-	var logger *log.Entry
+func getApexLogger(ctx context.Context, keys ...interface{}) Logger {
+	var logger Logger
 
 	// Get a logger, if it is present.
 	loggerInterface := ctx.Value(loggerKey{})
 	if loggerInterface != nil {
-		if lgr, ok := loggerInterface.(*log.Entry); ok {
+		if lgr, ok := loggerInterface.(Logger); ok {
 			logger = lgr
 		}
 	}
