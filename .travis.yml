@@ -13,5 +13,6 @@ script:
   - test -z "$(golint ./... | tee /dev/stderr)"
   - test -z "$(gofmt -s -l . | tee /dev/stderr)"
   - go test -race -v -coverprofile=context.coverprofile
+  - go test -race -v -coverprofile=context_mux.coverprofile ./mux
   - $HOME/gopath/bin/gover
   - $HOME/gopath/bin/goveralls -coverprofile=gover.coverprofile -service=travis-ci

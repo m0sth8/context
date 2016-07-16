@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/m0sth8/context"
+	"github.com/DmitriyMV/context"
 	"github.com/satori/go.uuid"
 	netContext "golang.org/x/net/context"
 )

@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/m0sth8/context"
+	"github.com/DmitriyMV/context"
 )
 
 func TestWithRequest(t *testing.T) {
