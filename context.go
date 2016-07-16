@@ -9,9 +9,9 @@ import (
 )
 
 // Context is a copy of Context from the golang.org/x/net/context package.
-//type Context interface {
-//	context.Context
-//}
+type Context interface {
+	context.Context
+}
 
 // instanceContext is a context that provides only an instance id. It is
 // provided as the main background context.
