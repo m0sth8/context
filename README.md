@@ -1,5 +1,9 @@
 # context
 
+[![Build Status](https://travis-ci.org/DmitriyMV/context.svg?branch=master)](https://travis-ci.org/DmitriyMV/context)
+[![GoDoc](https://godoc.org/github.com/DmitriyMV/context?status.svg)](https://godoc.org/github.com/DmitriyMV/context)
+[![Coverage Status](https://img.shields.io/coveralls/DmitriyMV/context.svg?flat=1)](https://coveralls.io/github/DmitriyMV/context)
+
 Context helpers inspired by https://godoc.org/github.com/docker/distribution/context.
 
 [Documentation](https://godoc.org/github.com/m0sth8/context)
