@@ -56,13 +56,13 @@ func GetLogger(ctx context.Context, keys ...interface{}) Logger {
 // are provided, they will be resolved on the context and included in the
 // logger. Only use this function if specific apex/log functionality is
 // required.
-func getApexLogger(ctx context.Context, keys ...interface{}) *log.Entry {
-	var logger *log.Entry
+func getApexLogger(ctx context.Context, keys ...interface{}) Logger {
+	var logger Logger
 
 	// Get a logger, if it is present.
 	loggerInterface := ctx.Value(loggerKey{})
 	if loggerInterface != nil {
-		if lgr, ok := loggerInterface.(*log.Entry); ok {
+		if lgr, ok := loggerInterface.(Logger); ok {
 			logger = lgr
 		}
 	}
@@ -83,7 +83,7 @@ func getApexLogger(ctx context.Context, keys ...interface{}) *log.Entry {
 		if alog, ok := log.Log.(*log.Logger); ok && alog.Handler == nil {
 			log.SetHandler(discard.Default)
 		}
-		logger = log.Log.WithFields(fields)
+		logger = withFields(log.Log, fields)
 
 	}
 
@@ -95,5 +95,14 @@ func getApexLogger(ctx context.Context, keys ...interface{}) *log.Entry {
 		}
 	}
 
-	return logger.WithFields(fields)
+	return withFields(logger, fields)
+}
+
+// withFields check if fields argument is not empty and calls WithFields on Logger interface.
+// Otherwise returns original Logger.
+func withFields(lgr Logger, fields log.Fields) Logger {
+	if len(fields) != 0 {
+		return lgr.WithFields(fields)
+	}
+	return lgr
 }
