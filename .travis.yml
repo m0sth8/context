@@ -13,6 +13,6 @@ script:
   - go vet ./...
   - test -z "$(golint ./... | tee /dev/stderr)"
   - test -z "$(gofmt -s -l . | tee /dev/stderr)"
-  - go test -race -v -coverprofile=trylock.coverprofile ./...
+  - go test -race -v -coverprofile=context.coverprofile
   - $HOME/gopath/bin/gover
   - $HOME/gopath/bin/goveralls -coverprofile=gover.coverprofile -service=travis-ci
