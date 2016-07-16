@@ -8,7 +8,6 @@ install:
   - go get github.com/golang/lint/golint
   - go get github.com/modocache/gover
   - go get github.com/mattn/goveralls
-  - go get golang.org/x/tools/cmd/cover
 script:
   - go vet ./...
   - test -z "$(golint ./... | tee /dev/stderr)"
