@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gorilla/mux"
 	"github.com/DmitriyMV/context"
+	"github.com/gorilla/mux"
 	"github.com/satori/go.uuid"
 	netContext "golang.org/x/net/context"
 )
